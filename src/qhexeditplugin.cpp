@@ -73,7 +73,7 @@ QString QHexEditPlugin::domXml() const
 
 QString QHexEditPlugin::includeFile() const
 {
-    return "qhexedit.h";
+    return "QHexEdit/qhexedit.h";
 }
 
 #if QT_VERSION < QT_VERSION_CHECK(5,0,0)
