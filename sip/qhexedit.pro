@@ -1,23 +1,26 @@
+INCLUDEPATH += .
+CONFIG      += plugin release
 TEMPLATE    = lib
-
-CONFIG      += qt warn_on release
+QT          += widgets designer
 
 HEADERS     = \
     ../src/qhexedit.h \
     ../src/qhexedit_p.h \
     ../src/xbytearray.h \
-    ../src/commands.h
+    ../src/commands.h \
+    ../src/qhexeditplugin.h
 
 
 SOURCES     = \
     ../src/qhexedit.cpp \
     ../src/qhexedit_p.cpp \
     ../src/xbytearray.cpp \
-    ../src/commands.cpp
+    ../src/commands.cpp \
+    ../src/qhexeditplugin.cpp
 
-# RESOURCES   =  hexedit.qrc
+OTHER_FILES += ../src/qhexedit.json
 
-TARGET      = qhexedit
-
-DESTDIR     = /usr/lib
+TARGET = $$qtLibraryTarget($$TARGET)
+target.path = $$[QT_INSTALL_PLUGINS]/designer
+INSTALLS += target
  
