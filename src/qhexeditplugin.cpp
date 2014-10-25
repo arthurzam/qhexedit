@@ -1,5 +1,5 @@
 #include "qhexeditplugin.h"
-#include "qhexedit.h"
+#include <QHexEdit/qhexedit.h>
 
 QHexEditPlugin::QHexEditPlugin(QObject *parent)
     : QObject(parent)
