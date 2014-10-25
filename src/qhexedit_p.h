@@ -85,9 +85,9 @@ protected:
 
 private slots:
     void updateCursor();
+    void adjust();
 
 private:
-    void adjust();
     void ensureVisible();
 
     QColor _addressAreaColor;

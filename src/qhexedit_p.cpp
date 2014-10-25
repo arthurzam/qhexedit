@@ -30,6 +30,7 @@ QHexEditPrivate::QHexEditPrivate(QScrollArea *parent) : QWidget(parent)
 
     setFocusPolicy(Qt::StrongFocus);
 
+    connect(this, SIGNAL(dataChanged()), this, SLOT(adjust())); //adjust scrollbar when inserting data
     connect(&_cursorTimer, SIGNAL(timeout()), this, SLOT(updateCursor()));
     _cursorTimer.setInterval(500);
     _cursorTimer.start();
