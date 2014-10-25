@@ -703,6 +703,18 @@ void QHexEditPrivate::paintEvent(QPaintEvent *event)
             int xPosAscii = _xPosAscii;
             for (int colIdx = 0; ((lineIdx + colIdx) < _xData.size() and (colIdx < BYTES_PER_LINE)); colIdx++)
             {
+                int posBa = lineIdx + colIdx;
+
+                if ((getSelectionBegin() <= posBa) && (getSelectionEnd() > posBa))
+                {
+                    painter.setBackground(selected);
+                    painter.setBackgroundMode(Qt::OpaqueMode);
+                    painter.setPen(colSelected);
+                } else {
+                    painter.setBackgroundMode(Qt::TransparentMode);
+                    painter.setPen(colStandard);
+                }
+
                 painter.drawText(xPosAscii, yPos, _xData.asciiChar(lineIdx + colIdx));
                 xPosAscii += _charWidth;
             }
@@ -760,7 +772,7 @@ int QHexEditPrivate::cursorPos(QPoint pos)
 {
     int result = -1;
     // find char under cursor
-    if ((pos.x() >= _xPosHex) and (pos.x() < (_xPosHex + HEXCHARS_IN_LINE * _charWidth)))
+    if ((pos.x() >= _xPosHex) and (pos.x() < (_xPosHex + (HEXCHARS_IN_LINE + 2) * _charWidth)))
     {
         int x = (pos.x() - _xPosHex) / _charWidth;
         if ((x % 3) == 0)
