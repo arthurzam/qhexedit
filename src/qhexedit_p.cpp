@@ -239,6 +239,7 @@ void QHexEditPrivate::setAddressArea(bool addressArea)
 void QHexEditPrivate::setAddressWidth(int addressWidth)
 {
     _xData.setAddressWidth(addressWidth);
+    adjust();
 
     setCursorPos(_cursorPosition);
 }
